@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         end: evento.endStr,
                         color: colorDocente,
                         creadoPor: evento.extendedProps.creadoPor,
-                        reservadoPor: userEmail
+                        reservadoPor: userEmail,
                       })
                     });
                     await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/notificar-reserva', {
@@ -201,6 +201,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                       tipo: 'reserva',
                       docenteEmail: evento.extendedProps.creadoPor,
                       participanteEmail: userEmail,
+                      numeroParticipante: lider.celular,
+                      nombreEmprendimiento: lider.emprendimiento,
                       detalles: `Día: ${evento.start.toLocaleDateString()} Hora: ${evento.start.toLocaleTimeString()}`
                     })
                   });
@@ -249,6 +251,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                       tipo: 'cancelacion',
                       docenteEmail: evento.extendedProps.creadoPor,
                       participanteEmail: userEmail,
+                      numeroParticipante: lider.celular,
+                      nombreEmprendimiento: lider.emprendimiento,
                       detalles: `Día: ${evento.start.toLocaleDateString()} Hora: ${evento.start.toLocaleTimeString()}`
                     })
                   });
