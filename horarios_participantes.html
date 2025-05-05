@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     evento.setExtendedProp('reservadoPor', userEmail);
 
                     // Guardar en backend
-                    await fetch('https://60e17ba7-90d1-4c73-9b88-6f0c03c63f49-00-34j3blk3fgeyy.riker.replit.dev/api/reservas/' + evento.id, {
+                    await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/reservas/' + evento.id, {
                       method: 'PUT',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         reservadoPor: userEmail
                       })
                     });
-                    await fetch('https://60e17ba7-90d1-4c73-9b88-6f0c03c63f49-00-34j3blk3fgeyy.riker.replit.dev/api/notificar-reserva', {
+                    await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/notificar-reserva', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     evento.setProp('color', colorDocente);
                     evento.setExtendedProp('reservadoPor', "");
 
-                    await fetch('https://60e17ba7-90d1-4c73-9b88-6f0c03c63f49-00-34j3blk3fgeyy.riker.replit.dev/api/reservas/' + evento.id, {
+                    await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/reservas/' + evento.id, {
                       method: 'PUT',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         reservadoPor: ""
                       })
                     });
-                    await fetch('https://60e17ba7-90d1-4c73-9b88-6f0c03c63f49-00-34j3blk3fgeyy.riker.replit.dev/api/notificar-reserva', {
+                    await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/notificar-reserva', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
   async function refrescarEventos(calendar) {
     try {
-      const response = await fetch('https://60e17ba7-90d1-4c73-9b88-6f0c03c63f49-00-34j3blk3fgeyy.riker.replit.dev/api/reservas');
+      const response = await fetch('https://25c63f52-427a-4b0c-8af4-eae87364fdf0-00-22friiec0xuv5.janeway.replit.dev/api/reservas');
       const data = await response.json();
 
       calendar.removeAllEvents();
