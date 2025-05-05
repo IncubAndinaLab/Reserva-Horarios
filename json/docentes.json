@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Roy Andy Humpire Castro",
+    "correo": "rhumpire@uandina.edu.pe",
+    "color": "#67bf5c",
+    "grado": "Mg."
+  },
+  {
+    "nombre": "Dennisse Paola Avila Davila",
+    "correo": "davilad@uandina.edu.pe",
+    "color": "#c98db1",
+    "grado": "Mg."
+  },
+  {
+    "nombre": "Manuel Ponce Fernandez Baca",
+    "correo": "mponcef@uandina.edu.pe",
+    "color": "#1039ad",
+    "grado": "Mg."
+  },
+  {
+    "nombre": "Cleidy Gloria Salas Olivera",
+    "correo": "csalaso@uandina.edu.pe",
+    "color": "#35d7dc",
+    "grado": "Mg."
+  }
+]

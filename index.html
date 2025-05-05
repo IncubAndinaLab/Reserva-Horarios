@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Incuba Andina Lab</title>
+  <link rel="stylesheet" href="css/styles1.css" />
+  <link rel="icon" href="images/logo 30x30 incuba.png" type="image/png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <img src="images/incuba.png" alt="Logo Incuba Andina" id="logo" />
+    <div id="app">
+      <h2>Bienvenido a<br />
+        Incuba Andina Lab</h2>
+      <center><button id="loginBtn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="GoogleIcon">
+      Ingresar con cuenta de google
+      </button></center>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAe3LW9dme23o1AGXqg4WkJ0-hrqRxx8h4",
+      authDomain: "reservas-incuba.firebaseapp.com",
+      projectId: "reservas-incuba",
+      storageBucket: "reservas-incuba.appspot.com",
+      messagingSenderId: "321837960358",
+      appId: "1:321837960358:web:65127a59a8aa4aae0d7867",
+      measurementId: "G-ERQ0CQWYWG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const loginBtn = document.getElementById('loginBtn');
+
+    loginBtn.addEventListener('click', async () => {
+      const provider = new GoogleAuthProvider();
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        if (!user.email.endsWith('@uandina.edu.pe')) {
+          await Swal.fire('Acceso restringido', 'Solo se permite acceso con correos institucionales @uandina.edu.pe', 'error');
+          await signOut(auth);
+          return;
+        }
+
+        localStorage.setItem('userEmail', user.email);
+        await Swal.fire(`Bienvenido, ${user.displayName}`, '', 'success');
+        window.location.href = "acceso.html";
+      } catch (error) {
+        console.error("Error en login:", error);
+        Swal.fire('Error al iniciar sesión', error.message, 'error');
+      }
+    });
+  </script>
+</body>
+</html>
