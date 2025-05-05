@@ -107,8 +107,7 @@
             extendedProps: {
               creadoPor: ev.creadoPor,
               reservadoPor: ev.reservadoPor || "",
-              id: ev.id,
-              celular: ev.celular || ""
+              id: ev.id
             }
           }));
 
@@ -145,8 +144,7 @@
                     end: new Date(info.date.getTime() + 30 * 60000),
                     color: colorDocente,
                     creadoPor: userEmail,
-                    reservadoPor: "",
-                    celular: ""  // <-- añadido aquí
+                    reservadoPor: ""
                   };
 
                   enviarReserva(nuevaReserva);
@@ -155,8 +153,7 @@
                     extendedProps: {
                       creadoPor: nuevaReserva.creadoPor,
                       reservadoPor: nuevaReserva.reservadoPor,
-                      id: nuevaReserva.id,
-                      celular: nuevaReserva.celular
+                      id: nuevaReserva.id
                     }
                   });
                 }
@@ -180,7 +177,6 @@
                 if (result.isConfirmed) {
                   const startDate = info.event.start;
                   const eventoID = info.event.extendedProps.id;
-
                   const esDisponible = info.event.title.includes("Disponible");
 
                   info.event.remove();
@@ -195,8 +191,7 @@
                       end: new Date(startDate.getTime() + 30 * 60000),
                       color: colorDocente,
                       creadoPor: userEmail,
-                      reservadoPor: "",
-                      celular: ""  // <-- añadido aquí también
+                      reservadoPor: ""
                     };
 
                     enviarReserva(nuevaDisponible);
@@ -205,8 +200,7 @@
                       extendedProps: {
                         creadoPor: nuevaDisponible.creadoPor,
                         reservadoPor: nuevaDisponible.reservadoPor,
-                        id: nuevaDisponible.id,
-                        celular: nuevaDisponible.celular
+                        id: nuevaDisponible.id
                       }
                     });
 
@@ -295,8 +289,7 @@
         extendedProps: {
           creadoPor: ev.creadoPor,
           reservadoPor: ev.reservadoPor || "",
-          id: ev.id,
-          celular: ev.celular || ""
+          id: ev.id
         }
       }));
 
