@@ -36,6 +36,7 @@
       .then(response => response.json())
       .then(data => {
         userRoles = data;
+        console.log(userRoles);  // Verifica que el archivo JSON se cargó correctamente
         iniciarControlAcceso();
       })
       .catch(error => {
