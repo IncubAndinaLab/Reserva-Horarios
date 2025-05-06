@@ -30,53 +30,27 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const userRoles = {
-      '018201307h@uandina.edu.pe': 'participante',
-      'IncubAndinaLab@uandina.edu.pe': 'docente',
-      'rhumpire@uandina.edu.pe': 'docente',
-      'davilad@uandina.edu.pe': 'docente',
-      'csalaso@uandina.edu.pe': 'docente',
-      'mponcef@uandina.edu.pe': 'docente',
-      'mholguin@uandina.edu.pe': 'docente',
-      'gastete@uandina.edu.pe': 'docente',
-      'acanahuire@uandina.edu.pe': 'docente',
-      '020200221h@uandina.edu.pe': 'participante',
-      '020201265i@uandina.edu.pe': 'participante',
-      '020100833a@uandina.edu.pe': 'participante',
-      '021100508b@uandina.edu.pe': 'participante',
-      '022200572c@uandina.edu.pe': 'participante',
-      '020200311g@uandina.edu.pe': 'participante',
-      'opena@uandina.edu.pe': 'participante',
-      '021101125j@uandina.edu.pe': 'participante',
-      '021100635d@uandina.edu.pe': 'participante',
-      '020102054j@uandina.edu.pe': 'participante',
-      '009100969f@uandina.edu.pe': 'participante',
-      '021100564j@uandina.edu.pe': 'participante',
-      '020100212g@uandina.edu.pe': 'participante',
-      '021101195h@uandina.edu.pe': 'participante',
-      '020100165i@uandina.edu.pe': 'participante',
-      '025101416k@uandina.edu.pe': 'participante',
-      '008100282a@uandina.edu.pe': 'participante',
-      '021200333j@uandina.edu.pe': 'participante',
-      '024140101h@uandina.edu.pe': 'participante',
-      '019201745d@uandina.edu.pe': 'participante',
-      '020102235d@uandina.edu.pe': 'participante',
-      '025101204c@uandina.edu.pe': 'participante',
-      '022100668i@uandina.edu.pe': 'participante',
-      '023100168e@uandina.edu.pe': 'participante',
-      '021201216g@uandina.edu.pe': 'participante',
-      '021140105f@uandina.edu.pe': 'participante',
-      '024240014j@uandina.edu.pe': 'participante',
-      '025110387j@uandina.edu.pe': 'participante',
-      '023110081j@uandina.edu.pe': 'participante'
-    };
+    let userRoles = {};
 
+    fetch('roles.json')
+      .then(response => response.json())
+      .then(data => {
+        userRoles = data;
+        iniciarControlAcceso();
+      })
+      .catch(error => {
+        Swal.fire('Error al cargar los roles.', '', 'error');
+        console.error(error);
+      });
+    function iniciarControlAcceso() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const userEmail = user.email;
-        document.getElementById('userName').textContent = user.displayName || userEmail;
+        const userEmail = user.email.toLowerCase();
+        
 
         if (userRoles[userEmail]) {
+          document.getElementById('userName').textContent = user.displayName || userEmail;
+          
           const userRole = userRoles[userEmail];
           localStorage.setItem('tipoUsuario', userRole);  // Guarda el tipo de usuario
 
@@ -96,6 +70,7 @@
         });
       }
     });
+    }
   </script>
 </body>
 </html>
