@@ -201,6 +201,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                       tipo: 'reserva',
                       docenteEmail: evento.extendedProps.creadoPor,
                       participanteEmail: userEmail,
+                      nombreLider: user.displayName,
                       numeroParticipante: lider.celular,
                       nombreEmprendimiento: lider.emprendimiento,
                       detalles: `Día: ${evento.start.toLocaleDateString()} Hora: ${evento.start.toLocaleTimeString()}`
@@ -251,6 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                       tipo: 'cancelacion',
                       docenteEmail: evento.extendedProps.creadoPor,
                       participanteEmail: userEmail,
+                      nombreLider: user.displayName,
                       numeroParticipante: lider.celular,
                       nombreEmprendimiento: lider.emprendimiento,
                       detalles: `Día: ${evento.start.toLocaleDateString()} Hora: ${evento.start.toLocaleTimeString()}`
