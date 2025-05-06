@@ -20,7 +20,6 @@
         Panel Docente - Gestión de Horarios<br>
         Bienvenido, <span id="userName"></span>
       </h2>
-      <div id="userFolderLink" style="margin-top: 10px;"></div>
       <div id="generalFolderLink" style="margin-top: 5px;">
         <strong>Carpeta general:</strong> <a href="https://drive.google.com/drive/folders/1gX2mMj2x0h5b75cv1lfW0jh3O3B3JDzI?usp=drive_link" target="_blank">Ver información común</a>
       </div>
@@ -86,10 +85,6 @@
           .then(response => response.json())
           .then(data => {
             const usuario = data.find(u => u.email === userEmail);
-            if (usuario) {
-              const linkDiv = document.getElementById("userFolderLink");
-              linkDiv.innerHTML = '<strong>Carpeta personal:</strong> <a href="' + usuario.link + '" target="_blank">Ver carpeta</a>';
-            }
           })
           .catch(error => {
             console.error("Error al cargar carpetas_personales.json:", error);
